@@ -6,6 +6,15 @@
 
 <body>
     <h1>Welcome to the Mini Message Board</h1>
+    <% if (messages.length === 0) { %>
+        <p>No messages yet. Be the first to post!</p>
+    <% } else { %>
+        <ul>
+            <% messages.forEach(function(message) { %>
+                <li><strong><%=  message.added.toLocaleDateString() %> <%= message.user %>:</strong> <%= message.text %></li>
+            <% }); %>
+        </ul>
+    <% } %>
 </body>
 
 </html>
