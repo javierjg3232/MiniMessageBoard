@@ -16,6 +16,7 @@ const messages = [
 ];
 
 indexRouter.get("/", (req, res) => {
+    console.log(messages);
   res.render("index", { messages: messages });
 });
 
@@ -25,8 +26,8 @@ indexRouter.get("/new", (req, res) => {
 
 indexRouter.post("/new", (req, res) => {
   let newMessage = {
-    text: req.query.messageText,
-    user: req.query.userName,
+    text: req.body.message,
+    user: req.body.user,
     added: new Date()
   };
   messages.push(newMessage);

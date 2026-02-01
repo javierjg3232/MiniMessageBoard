@@ -11,6 +11,10 @@ app.set("view engine", "ejs");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
+
 //routes
 app.use("/", indexRouter);
 
