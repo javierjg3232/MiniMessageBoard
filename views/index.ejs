@@ -12,8 +12,10 @@
         <p>No messages yet. Be the first to post!</p>
     <% } else { %>
         <ul>
-            <% messages.forEach(function(message) { %>
+            <% messages.forEach(function(message, index) { %>
+                <a href="/message/<%= index %>">
                 <li><strong><%=  message.added.toLocaleDateString() %> <%= message.user %>:</strong> <%= message.text %></li>
+                </a>
             <% }); %>
         </ul>
     <% } %>
