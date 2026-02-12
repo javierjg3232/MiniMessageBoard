@@ -2,6 +2,7 @@
 
 <head>
     <title>Homepage</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -13,8 +14,8 @@
     <% } else { %>
         <ul>
             <% messages.forEach(function(message, index) { %>
-                <a href="/message/<%= index %>">
-                <li><strong><%=  message.added.toLocaleDateString() %> <%= message.user %>:</strong> <%= message.text %></li>
+                <a href="/message/<%= message.id %>">
+                <li><strong><%=  message.added_at.toLocaleDateString() %> <%= message.username %>:</strong> <%= message.text %></li>
                 </a>
             <% }); %>
         </ul>

@@ -1,17 +1,7 @@
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  }
-];
+const { getAllMessages, insertMessage, getMessageById } = require("../db/queries");
 
-const getIndex = (req, res) => {
+const getIndex = async (req, res) => {
+  const messages = await getAllMessages();
   res.render('index', { messages });
 };
 
@@ -19,24 +9,20 @@ const getNewForm = (req, res) => {
   res.render('newMessageForm');
 };
 
-const createNewMessage = (req, res) => {
+const createNewMessage = async (req, res) => {
   const newMessage = {
     text: req.body.message,
     user: req.body.user,
     added: new Date(),
   };
-  messages.push(newMessage);
+  await insertMessage(newMessage.text, newMessage.user);
   res.redirect('/');
 };
 
-const getMessageDetails = (req, res) => {
+const getMessageDetails = async (req, res) => {
   const id = req.params.id;
-  const message = messages[id];
-  if (message) {
-    res.render('messageDetails', { message });
-  } else {
-    res.status(404).send('Message not found');
-  }
+  const message = await getMessageById(id);
+  res.render('messageDetails', { message });
 };
 
 module.exports = {

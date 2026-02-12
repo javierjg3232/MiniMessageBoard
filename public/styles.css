@@ -1,0 +1,162 @@
+/* Mini Message Board - styles.css */
+
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --accent: #10b981;
+  --danger: #ef4444;
+  --max-width: 820px;
+  --radius: 10px;
+  --shadow: 0 6px 18px rgba(18, 24, 33, 0.08);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Global */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(180deg, var(--bg), #eef2f6);
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* Page wrapper */
+.container {
+  max-width: var(--max-width);
+  margin: 48px auto;
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.2px;
+}
+
+/* New message link styled as button */
+.header-cta {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(37,99,235,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37,99,235,0.16);
+}
+
+/* Messages list */
+.section-title { margin: 12px 0 8px; font-size: 1.05rem; color: var(--muted); }
+.message-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+/* Each message card */
+.message-card {
+  display: block;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .10s ease, box-shadow .10s ease;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.08);
+}
+
+.message-meta {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.message-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.message-user {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.message-text {
+  margin: 4px 0 0;
+  color: #111827;
+  word-break: break-word;
+}
+
+/* When there are no messages */
+.empty-state {
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+  border-radius: 10px;
+  border: 1px dashed rgba(15, 23, 42, 0.06);
+  color: var(--muted);
+}
+
+/* Make the original anchor-around-li layout look OK */
+ul.message-list > a { text-decoration: none; }
+ul.message-list > a > li { list-style: none; margin: 0; padding: 0; }
+
+/* Utilities */
+small.muted { color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 520px) {
+  .container { padding: 16px; margin: 24px auto; }
+  h1 { font-size: 1.25rem; }
+  .header-cta { padding: 8px 12px; }
+}
+
+/* Small form styles for other views (messageDetails / newMessageForm) */
+.form-card {
+  max-width: 720px;
+  margin-top: 18px;
+  background: var(--card);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+.input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+  font-size: 0.95rem;
+}
+textarea { min-height: 120px; resize: vertical; }
+.btn { display: inline-block; padding: 8px 12px; border-radius: 8px; text-decoration: none; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-danger { background: var(--danger); color: #fff; }
+
+/* Accessibility focus states */
+.header-cta:focus, .message-card:focus, .btn:focus { outline: 3px solid rgba(37,99,235,0.18); outline-offset: 2px; }
+
+/* Footer spacing */
+.footer { margin-top: 28px; font-size: 0.85rem; color: var(--muted); text-align: center; }
